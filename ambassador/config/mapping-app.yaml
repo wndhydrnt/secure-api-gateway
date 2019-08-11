@@ -1,0 +1,7 @@
+---
+apiVersion: ambassador/v1
+kind: Mapping
+name: app_mapping
+host: app.local
+prefix: /
+service: http://app:8080

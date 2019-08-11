@@ -1,0 +1,10 @@
+---
+apiVersion: ambassador/v1
+kind: AuthService
+name: authentication
+auth_service: oathkeeper:4456
+path_prefix: /decisions
+proto: http
+allowed_authorization_headers:
+  - "X-User"
+  - "X-Subject"

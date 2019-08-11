@@ -1,0 +1,26 @@
+log:
+  level: debug
+
+access_rules:
+  repositories:
+    - file:///oathkeeper/rules.json
+
+authenticators:
+  noop:
+    enabled: true
+  oauth2_introspection:
+    enabled: true
+    introspection_url: http://oauth2-introspection:8484/oauth2/introspection
+    scope_strategy: none
+
+authorizers:
+  allow:
+    enabled: true
+  deny:
+    enabled: true
+
+mutators:
+  noop:
+    enabled: true
+  header:
+    enabled: true

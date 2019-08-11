@@ -1,0 +1,51 @@
+[
+  {
+    "id": "ambassador",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "http://localhost:8080/ambassador/<.*>"
+    },
+    "authenticators": [
+      {
+        "handler": "noop"
+      }
+    ],
+    "authorizer": {
+      "handler": "allow"
+    },
+    "mutator": {
+      "handler": "noop"
+    }
+  },
+  {
+    "id": "app",
+    "match": {
+      "methods": ["GET"],
+      "url": "http://app.local/message"
+    },
+    "authenticators": [
+      {
+        "handler": "oauth2_introspection",
+        "config": {
+          "required_scope": [
+            "read"
+          ]
+        }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow"
+    },
+    "mutator": {
+      "handler": "header",
+      "config": {
+        "headers": {
+          "X-User": "{{ print .Extra.username }}",
+          "X-Subject": "{{ print .Subject }}"
+        }
+      }
+    }
+  }
+]
