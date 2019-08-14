@@ -10,6 +10,7 @@
 ## Usage
 
 ```
+$ make package_oauth2_introspection
 $ docker-compose up -d
 Creating network "secure-api-gateway_default" with the default driver
 Creating secure-api-gateway_app_1                  ... done
